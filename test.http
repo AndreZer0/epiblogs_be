@@ -1,0 +1,158 @@
+#AUTHORS
+
+GET http://localhost:5050/authors HTTP/1.1
+
+
+####
+
+
+POST http://localhost:5050/authors/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName":"Luca",
+    "lastName":"Abete",
+    "email":"Popolodistriscia@gmail.com",
+    "password":"gabibbo",
+    "birth":"7 Marzo 1965 ",
+    "avatar":"https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png"
+}
+
+####
+
+POST http://localhost:5050/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "PlumberBoys@gmail.com",
+  "password": "mammamia"
+}
+####
+
+
+GET http://localhost:5050/authors/byId/65358e1660037cc4dff47539 HTTP/1.1
+
+
+####
+PUT http://localhost:5050/authors/modify/65358e1660037cc4dff47539 HTTP/1.1
+Content-Type: application/json
+
+{
+    "password":"Gabibbo"
+}
+
+####
+
+DELETE http://localhost:5050/authors/delete/65358e1660037cc4dff47539 HTTP/1.1
+
+# ####
+#  GET http://localhost:5050/authors/65352cdf7ae1699ba0b146f3/posts HTTP/1.1
+
+####
+
+# BLOGPOST
+
+GET http://localhost:5050/blogPosts/new HTTP/1.1
+
+
+####
+
+GET http://localhost:5050/blogPosts?page=1 HTTP/1.1
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJMdWlnaSIsImxhc3ROYW1lIjoiQnJvcyIsImVtYWlsIjoiUGx1bWJlckJveXNAZ21haWwuY29tIiwiYmlydGgiOiI3IE1hcnpvIDE4OTQgIiwiaWF0IjoxNjk3NjQ1MDMzLCJleHAiOjE2OTc3MzE0MzN9.Tbx94r6VlTdE0Z4YfbsNMnYR4l3Cue6ZNLHBhkSkxF8
+
+####
+POST http://localhost:5050/blogPosts/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "category":"horror",
+    "title":"Test",
+    "category":"horror",
+    "cover":"https://scitechdaily.com/images/Alien-Holding-Planet-Earth-scaled.jpg",
+    "readTime":{
+        "value":25,
+        "unit":"min"
+    },
+    "author":{
+        "name":"Alice Ent",
+        "avatar":"https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png",
+        "id":"65352cdf7ae1699ba0b146f3"
+    },
+    "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    
+}
+####
+
+GET http://localhost:5050/blogPosts/byId/6523d15c8909db18f9c5066f HTTP/1.1
+
+####
+
+PUT http://localhost:5050/blogPosts/modify/6535eb58ea2572eab07b4ddb HTTP/1.1
+Content-Type: application/json
+
+{
+   "author":{
+    "name":"652d59fd70931c3eb9af86b1",
+    "avatar":"https://static-00.iconduck.com/assets.00/avatar-default-icon-248x256-bdv8pdld.png"
+   }
+}
+
+####
+
+
+DELETE http://localhost:5050/blogPosts/delete/65358fa80267fb3d1ba18d4b HTTP/1.1
+
+####
+GET http://localhost:5050/blogPosts/title?title=among  HTTP/1.1
+
+####
+
+POST http://localhost:5050/send-email HTTP/1.1
+Content-Type:application/json
+
+{
+    "subject":"Confidential email",
+    "text":"Hi, this is the mail"
+}
+
+
+
+
+####
+# COMMENTS
+
+POST http://localhost:5050/blogPosts/6523d15c8909db18f9c5066f/comment/create  HTTP/1.1
+Content-Type: application/json
+
+{
+
+    "username":"Mario Bianchi",
+    "content":"Un po' troppo lungo",
+    "timestamp":{
+        "date":21,
+        "hour":20
+    },
+    "code":"6523d15c8909db18f9c5066f"
+}
+
+
+####
+
+GET http://localhost:5050/blogPosts/6523d15c8909db18f9c5066f/comments HTTP/1.1
+
+####
+
+GET http://localhost:5050/blogPosts/6523d15c8909db18f9c5066f/comments/6535a2c98abb96ed71e50eb7 HTTP/1.1
+
+####
+
+PUT http://localhost:5050/blogPosts/6523d15c8909db18f9c5066f/comments/65355a4844a9e25b07cd3901/modify HTTP/1.1
+Content-Type: application/json
+
+{
+    "username":"Luca Gialli"
+}
+
+####
+
+DELETE http://localhost:5050/blogPosts/6523d15c8909db18f9c5066f/comments/6526b3c18af66a7abe090ce4/delete HTTP/1.1
