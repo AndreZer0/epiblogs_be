@@ -44,7 +44,7 @@ gh.get(
   '/auth/github',
   passport.authenticate('github', { scope: ['user:email'] }),
   (req, res) => {
-    const redirectUrl = `https://leafy-platypus-dcee28.netlify.app//success?user=${encodeURIComponent(
+    const redirectUrl = `http://localhost:3000/success?user=${encodeURIComponent(
       JSON.stringify(req.user)
     )}`;
     res.redirect(redirectUrl);
@@ -59,7 +59,7 @@ gh.use(
     console.log('LOG USER', user);
 
     const token = jwt.sign(user, process.env.JWT_SECRET);
-    const redirectUrl = `https://leafy-platypus-dcee28.netlify.app//success?${encodeURIComponent(
+    const redirectUrl = `http://localhost:3000/success?${encodeURIComponent(
       token
     )}`;
     res.redirect(redirectUrl);
@@ -67,7 +67,7 @@ gh.use(
 );
 
 gh.get('/success', (req, res) => {
-  res.redirect('https://leafy-platypus-dcee28.netlify.app//Home');
+  res.redirect('http://localhost:3000/Home');
 });
 
 module.exports = gh;
