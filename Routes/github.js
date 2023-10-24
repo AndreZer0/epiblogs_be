@@ -67,7 +67,7 @@ gh.use(
 );
 
 gh.get('/success', (req, res) => {
-  res.redirect('http://localhost:3000/Home');
+  res.redirect('https://leafy-platypus-dcee28.netlify.app');
 });
 
 module.exports = gh;
