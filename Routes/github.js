@@ -44,9 +44,9 @@ gh.get(
   '/auth/github',
   passport.authenticate('github', { scope: ['user:email'] }),
   (req, res) => {
-    const redirectUrl = `http://localhost:3000/success?user=${encodeURIComponent(
-      JSON.stringify(req.user)
-    )}`;
+    const redirectUrl = `${
+      process.env.APP_SERVER_DEPLOY
+    }/success?user=${encodeURIComponent(JSON.stringify(req.user))}`;
     res.redirect(redirectUrl);
   }
 );
@@ -59,9 +59,9 @@ gh.use(
     console.log('LOG USER', user);
 
     const token = jwt.sign(user, process.env.JWT_SECRET);
-    const redirectUrl = `http://localhost:3000/success?${encodeURIComponent(
-      token
-    )}`;
+    const redirectUrl = `${
+      process.env.APP_SERVER_DEPLOY
+    }/success?${encodeURIComponent(token)}`;
     res.redirect(redirectUrl);
   }
 );
